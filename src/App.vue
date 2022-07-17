@@ -1,30 +1,53 @@
+
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
-</template>
+<header>
+  <router-view to ="/">
+    <h1><span>The </span>Movie Hunter</h1>
+  </router-view>
+  </header>
+  <main>
+    <router-view>
+       
+    </router-view>
+  </main>
+  </template>
+
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+
+  &::selection{
+    background: transparent(#E50914,0.5);
+  }
+}
+body{
+  background-color: black;
 }
 
-nav {
-  padding: 30px;
+a{
+  text-decoration: none;
+}
+header{
+  display: flex;
+  align-items: center;
+  padding: 10px 30x;
+  justify-content: center;
+  background-color: darkblue;
+  box-shadow: 0px 6px 6px rgba(0,0,0,0.1);
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+}
+h1{
+  color: red;
+  font-size: 30px;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  span{
+    color: #ffffff;
   }
 }
 </style>
