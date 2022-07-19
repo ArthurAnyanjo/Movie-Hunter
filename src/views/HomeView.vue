@@ -8,27 +8,52 @@
         <div class="desc">
           <h4>Guardians of Galaxy Vol 2</h4>
           <p>The Guardians struggle to keep together as a team while dealing with their personal family issues, notably
-            Star-Lord's encounter with his father the ambitious celestial being Ego</p>
+            Star-Lord's encounter with his father the ambitious celestial being Ego.</p>
         </div>
       </router-link>
+    </div>
+
+    <form @submit.prevent="MoviesSearch()" class="search-box">
+
+      <input type="text" placeholder="Search Movie or Id"  v-model="search" />
+      <input type="submit" value="search" />
+    </form>
+
+    <div class="listMovies">
+      movies
     </div>
   </div>
 </template>
 
 <script>
-
+import { ref } from 'vue';
 
 export default {
+  setup() {
+    const search = ref("");
+    const movies = ref([]);
+
+    const MoviesSearch = () => {
+      if (search.value != "") {
+        console.log(search.value);
+      }
+    }
+
+    return {
+      search,movies,MoviesSearch
+    }
+
+  }
 
 }
 </script>
 
 <style lang="scss">
-.home{
-  .main-card{
+.home {
+  .main-card {
     position: relative;
 
-    .main-image{
+    .main-image {
       display: block;
       width: 100%;
       height: 280px;
@@ -38,7 +63,78 @@ export default {
       z-index: 0;
 
     }
+
+    .desc {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 18px;
+      z-index: 1;
+    }
+
+    h4 {
+      color: whitesmoke;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: white;
+    }
+  }
+
+  .search-box {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    padding: 17px;
+
+    input {
+      display: block;
+      appearance: none;
+      border: none;
+      outline: auto;
+      background: none;
+
+      &[type="text"] {
+        width: 100%;
+        color: azure;
+        background-color: crimson;
+        font-size: x-large;
+        padding: 10px 16px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: 0.5s;
+
+        &::placeholder {
+          color: #ffffff;
+        }
+
+        &:focus {
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      &[type="submit"] {
+        width: 100%;
+        padding: 14px;
+        font-size: 20px;
+        color: #ffffff;
+        text-transform: uppercase;
+        transition: 0, 6s;
+        max-width: 250px;
+        background-color: darkblue;
+      }
+
+      &:active {
+        background-color: bisque;
+      }
+    }
+
   }
 }
-
 </style>
