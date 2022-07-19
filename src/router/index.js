@@ -5,12 +5,12 @@ import MovieView from '../views/MovieView.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'Home View',
     component: HomeView
   },
   {
-    path:'/movie/:id',
-    name:'Movie View',
+    path: '/movie/:id',
+    name: 'Movie View',
     component: MovieView
   }
 

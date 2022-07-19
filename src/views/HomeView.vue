@@ -14,14 +14,13 @@
     </div>
 
     <form @submit.prevent="MoviesSearch()" class="search-box">
-
       <input type="text" placeholder="Search Movie or ID" v-model="search" />
       <input type="submit" value="search" />
     </form>
 
     <div class="listMovies">
-      <div class="displayMovies" v-for="movie in movies" :key="movie.imbID">
-        <router-link :to="'/movie/' + movie.imbID" class="movie-direct">
+      <div class="movie" v-for= "movie in movies" :key= "movie.imdbID">
+        <router-link :to= "'/movie/' + movie.imdbID" class="movie-direct">
           <div class="product-Image">
             <img :src="movie.Poster" alt="Movie Posters" />
             <div class="type">{{ movie.Type }}</div>
@@ -38,7 +37,6 @@
 
 <script>
 import { ref } from 'vue';
-
 import env from '@/env.js'
 
 
@@ -49,7 +47,7 @@ export default {
 
     const MoviesSearch = () => {
       if (search.value != "") {
-        fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
+       fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
           .then(response => response.json())
           .then(data => {
 
@@ -163,7 +161,7 @@ export default {
     flex-wrap: wrap;
     margin: 0px 10px;
 
-    .displayMovies {
+    .movie {
       padding: 10px 12px;
       max-width: 60%;
       flex: 1 1 25%;
