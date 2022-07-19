@@ -15,18 +15,32 @@
 
     <form @submit.prevent="MoviesSearch()" class="search-box">
 
-      <input type="text" placeholder="Search Movie or Id"  v-model="search" />
+      <input type="text" placeholder="Search Movie or ID" v-model="search" />
       <input type="submit" value="search" />
     </form>
 
     <div class="listMovies">
-      movies
+      <div class="displayMovies" v-for="movie in movies" :key="movie.imbID">
+        <router-link :to="'/movie/' + movie.imbID" class="movie-direct">
+          <div class="product-Image">
+            <img :src="movie.Poster" alt="Movie Posters" />
+            <div class="type">{{ movie.Type }}</div>
+          </div>
+          <div class="desc">
+            <p class="year">{{ movie.Year }}</p>
+            <h4>{{ movie.Title }}</h4>
+          </div>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
+
+import env from '@/env.js'
+
 
 export default {
   setup() {
@@ -35,12 +49,19 @@ export default {
 
     const MoviesSearch = () => {
       if (search.value != "") {
-        console.log(search.value);
+        fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
+          .then(response => response.json())
+          .then(data => {
+
+            movies.value = data.Search;
+            search.value = "";
+
+          });
       }
     }
 
     return {
-      search,movies,MoviesSearch
+      search, movies, MoviesSearch
     }
 
   }
@@ -135,6 +156,58 @@ export default {
       }
     }
 
+  }
+
+  .listMovies {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px 10px;
+
+    .displayMovies {
+      padding: 10px 12px;
+      max-width: 60%;
+      flex: 1 1 25%;
+
+      .movie-direct {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .product-Image {
+          position: relative;
+
+          display: block img {
+            display: inline;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+
+          .type {
+            position: absolute;
+            padding: 8px 12px;
+            background-color: crimson;
+            color: whitesmoke;
+            bottom: 14px;
+            left: 0px;
+            text-transform: capitalize;
+            }
+        }
+        .desc{
+          background-color: #8DAABC;
+          padding: 12px 9px;
+          flex: 1 1 100%;
+
+          .year{
+            font-size: 12px;
+          }
+          .h4{
+            font-size: 18px;
+          }
+
+        }
+      }
+    }
   }
 }
 </style>
