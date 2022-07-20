@@ -24,4 +24,4 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Live Website
-delightful-cassata-a6ec1c.netlify.app
+(https://delightful-cassata-a6ec1c.netlify.app/)
