@@ -1,14 +1,13 @@
 <template>
   <div class="home">
     <div class="main-card">
-      <router-link to="/movie/tt3896198">
+      <router-link to="/movie/tt1745960">
         <img
-          src="https://www.denofgeek.com/wp-content/uploads/2019/04/guardians_of_the_galaxy_2_large.jpg?resize=768%2C432"
-          alt="gog2 poster" class="main-image" />
+          src="https://i.ytimg.com/vi/giXco2jaZ_4/maxresdefault.jpg"
+          alt="tgm poster" class="main-image" />
         <div class="desc">
-          <h4>Guardians of Galaxy Vol 2</h4>
-          <p>The Guardians struggle to keep together as a team while dealing with their personal family issues, notably
-            Star-Lord's encounter with his father the ambitious celestial being Ego.</p>
+          <h4>Top Gun: Maverick</h4>
+          <p>After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him..</p>
         </div>
       </router-link>
     </div>
@@ -77,7 +76,8 @@ export default {
       width: 100%;
       height: 280px;
       object-fit: cover;
-
+     
+ 
       position: relative;
       z-index: 0;
 
@@ -110,6 +110,7 @@ export default {
     flex-direction: column;
     justify-content: baseline;
     align-items: center;
+    text-align: center;
     padding: 17px;
 
     input {
@@ -151,6 +152,9 @@ export default {
 
       &:active {
         background-color: bisque;
+      }
+      &:hover{
+        background-color: purple;
       }
     }
 

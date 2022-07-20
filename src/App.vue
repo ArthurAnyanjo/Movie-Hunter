@@ -2,9 +2,9 @@
 
 <template>
 <header>
-  <router-view to ="/">
+  <router-link to ="/">
     <h1><span>The </span>Movie Hunter</h1>
-  </router-view>
+  </router-link>
   </header>
   <main>
     <router-view>
@@ -28,7 +28,17 @@
 }
 body{
   background-color: black;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 5;
+  animation-delay: 2s;
 }
+
+@keyframes example {
+  from {background-color: black;}
+  to {background-color: red;}
+}
+
 
 a{
   text-decoration: none;
