@@ -74,7 +74,9 @@ export default {
     .main-image {
       display: block;
       width: 100%;
-      height: 280px;
+         height: 100%;
+    max-height: 546px;
+    min-height: 300px;
       object-fit: cover;
      
  
